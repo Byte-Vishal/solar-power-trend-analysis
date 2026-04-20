@@ -1,22 +1,19 @@
 # ☀️ Solar Power Trend Analysis
 
-> **Course:** 21ECE375T — Data Science for Communication Networks  
+> **Course:** 21CSS303T — Data Science
 > **Department:** Electronics & Communication Engineering (W/s in Data Science)  
 > **Institution:** SRM Institute of Science & Technology, Vadapalani  
-> **Submitted by:** [Your Name] — [Register Number]  
-> **Guide:** Dr. B Priyadharshini, Assistant Professor (O.G)
+> **Submitted by:** Vishal. M — RA2311053040040 
+> **Guide:** Dr. Dinesh Babu
 
----
 
 ## 📋 Project Overview
 
 This project performs a comprehensive trend analysis of solar power generation data using supervised machine learning and statistical methods. The goal is to uncover seasonal patterns, identify key predictors of energy output, and build a regression model for output forecasting — supporting informed decision-making in renewable energy planning.
 
----
 
 ## 📁 Repository Structure
 
-```
 solar_power_project/
 │
 ├── dataset/
@@ -39,9 +36,7 @@ solar_power_project/
 │
 ├── README.md
 └── requirements.txt
-```
 
----
 
 ## 📊 Dataset Description
 
@@ -59,7 +54,6 @@ solar_power_project/
 - **Records:** 72 (monthly, Jan 2018 – Dec 2023)  
 - **Missing values:** ~6 entries (handled via median imputation)
 
----
 
 ## 🔧 Steps Performed
 
@@ -71,7 +65,6 @@ solar_power_project/
 6. **Regression Model** — Linear Regression with 80/20 train-test split
 7. **Evaluation** — R², RMSE, MAE; actual vs predicted plot
 
----
 
 ## 📈 Results
 
@@ -89,7 +82,6 @@ solar_power_project/
 | Installed Capacity | +0.59 |
 | Cloud Cover | −0.41 |
 
----
 
 ## 💡 Key Insights
 
@@ -100,7 +92,6 @@ solar_power_project/
 5. **Linear Regression** explains 92.2% of variance — near-linear relationships confirmed
 6. Installed capacity scaling is the primary driver of long-term growth
 
----
 
 ## 🚀 How to Run
 
@@ -121,7 +112,6 @@ Outputs (graphs + console stats) will be saved to `outputs/`.
 jupyter notebook notebooks/solar_analysis.ipynb
 ```
 
----
 
 ## 🔮 Future Work
 
@@ -131,7 +121,6 @@ jupyter notebook notebooks/solar_analysis.ipynb
 - Build a Streamlit dashboard for interactive analysis
 - Include grid-connected vs off-grid comparison
 
----
 
 ## 📚 References
 
