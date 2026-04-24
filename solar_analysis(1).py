@@ -1,8 +1,3 @@
-"""
-Solar Power Trend Analysis
-21ECE375T — Data Science for Communication Networks
-"""
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -14,7 +9,6 @@ import os, warnings
 warnings.filterwarnings('ignore')
 os.makedirs('../outputs', exist_ok=True)
 
-# ── 1. Generate & Load Dataset ────────────────────────────────────────────────
 np.random.seed(42)
 months = pd.date_range('2018-01', '2023-12', freq='MS')
 n = len(months)
@@ -37,7 +31,6 @@ df['season'] = df['month'].map({12:'Winter',1:'Winter',2:'Winter',
                                  6:'Summer',7:'Summer',8:'Summer',
                                  9:'Autumn',10:'Autumn',11:'Autumn'})
 
-# Introduce & fix missing values
 for col in ['irradiance', 'temperature', 'cloud_cover']:
     df.loc[np.random.choice(df.index, 2), col] = np.nan
 df.fillna(df.median(numeric_only=True), inplace=True)
@@ -46,7 +39,6 @@ df.to_csv('../dataset/solar_dataset.csv', index=False)
 print(f"Dataset: {df.shape} | Missing after imputation: {df.isnull().sum().sum()}")
 print(df[['irradiance','temperature','cloud_cover','output']].describe().round(2))
 
-# ── 2. Line Plot — Monthly Output Over Time ───────────────────────────────────
 plt.figure(figsize=(12, 4))
 plt.plot(df['date'], df['output'], color='#E5831A', linewidth=2)
 plt.fill_between(df['date'], df['output'], alpha=0.12, color='#E5831A')
@@ -55,7 +47,6 @@ plt.xlabel('Date'); plt.ylabel('Output (kWh)')
 plt.xticks(rotation=45); plt.tight_layout()
 plt.savefig('../outputs/plot1_line_output.png', dpi=150); plt.close()
 
-# ── 3. Seaborn Heatmap — Output by Month x Year ──────────────────────────────
 pivot = df.pivot_table(values='output', index='year', columns='month')
 pivot.columns = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 plt.figure(figsize=(12, 4))
@@ -64,7 +55,6 @@ plt.title('Heatmap - Monthly Output by Year')
 plt.tight_layout()
 plt.savefig('../outputs/plot2_heatmap.png', dpi=150); plt.close()
 
-# ── 4. Scatter — Irradiance vs Output ────────────────────────────────────────
 plt.figure(figsize=(7, 5))
 sns.regplot(data=df, x='irradiance', y='output',
             scatter_kws={'alpha':0.7, 'color':'#E5831A', 'edgecolors':'k', 'linewidths':0.3},
@@ -74,7 +64,6 @@ plt.xlabel('Solar Irradiance (kWh/m2/day)'); plt.ylabel('Output (kWh)')
 plt.tight_layout()
 plt.savefig('../outputs/plot3_scatter.png', dpi=150); plt.close()
 
-# ── 5. Seaborn Violin — Output by Season ─────────────────────────────────────
 plt.figure(figsize=(8, 5))
 sns.violinplot(data=df, x='season', y='output',
                order=['Spring','Summer','Autumn','Winter'],
@@ -86,7 +75,6 @@ plt.xlabel('Season'); plt.ylabel('Output (kWh)')
 plt.tight_layout()
 plt.savefig('../outputs/plot4_violin.png', dpi=150); plt.close()
 
-# ── 6. Feature Selection + Linear Regression ─────────────────────────────────
 features = ['irradiance','temperature','cloud_cover','installed_capacity']
 corr = df[features + ['output']].corr()['output'].drop('output')
 print(f"\nPearson r with output:\n{corr.round(3)}")
