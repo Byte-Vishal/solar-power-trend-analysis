@@ -1,9 +1,11 @@
 # ☀️ Solar Power Trend Analysis
 
 > **Course:** 21CSS303T — Data Science
+
 > **Department:** Electronics & Communication Engineering (W/s in Data Science)  
 > **Institution:** SRM Institute of Science & Technology, Vadapalani  
 > **Submitted by:** Vishal. M — RA2311053040040 
+
 > **Guide:** Dr. Dinesh Babu
 
 
